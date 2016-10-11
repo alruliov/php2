@@ -2,6 +2,8 @@
 
 require_once __DIR__ . '/autoload.php';
 
-$users = \App\Model\User::findAll();
+$articles = new \App\Model\Articles();
+$articles->getArticles();
 
-var_dump($users);
+
+?>
