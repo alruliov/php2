@@ -37,7 +37,7 @@ class Articles extends Model
 
     }
 
-    public function getOneArticles($id)
+    public function getOneArticle($id)
 
     {
         $articles = \App\Model\Articles::findById($id);
