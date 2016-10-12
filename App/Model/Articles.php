@@ -13,7 +13,7 @@ use App\Model;
 class Articles extends Model
 {
 
-    public static $table = 'news';
+    public static $table = 'articles';
 
     public $id;
     public $created_at;
@@ -33,7 +33,9 @@ class Articles extends Model
 
         $articles = \App\Model\Articles::findAllByLimit(3);
 
-        include __DIR__ . '/../Template/article.php';
+
+
+        include __DIR__ . '/../Template/articles.php';
 
 
     }
@@ -41,12 +43,16 @@ class Articles extends Model
     public function getOneArticle($id)
 
     {
-        $articles = \App\Model\Articles::findById($id);
+        $article = \App\Model\Articles::findById($id);
 
-        if ($articles) {
+        if ($article) {
             include __DIR__ . '/../Template/article.php';
         } else {
-            echo 'Выбраной Вами статьи не существует';
+
+            /***
+             * Заглушка
+             */
+            echo 'Выбраной Вами статьи не существует'; die;
         }
 
 

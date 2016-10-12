@@ -37,19 +37,19 @@ abstract class Model
         return $data;
     }
     public static function findById($id)
-    {
-        $db = new Db();
-        $data = $db->query(
-            'SELECT * FROM ' . static::$table . ' WHERE id=:id',
-            [':id' => $id],
-            static::class
-        );
+{
+    $db = new Db();
+    $data = $db->query(
+        'SELECT * FROM ' . static::$table . ' WHERE id=:id LIMIT 1',
+        [':id' => $id],
+        static::class
+    );
 
-        if (empty($data)){
-            return false;
-        } else return $data;
+    if (empty($data)){
+        return false;
+    } else return $data[0];
 
-    }
+}
 
 
 }
