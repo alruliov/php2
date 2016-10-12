@@ -13,7 +13,7 @@ use App\Model;
 class Articles extends Model
 {
 
-    public static $table = 'articles';
+    public static $table = 'news';
 
     public $id;
     public $created_at;
@@ -30,10 +30,11 @@ class Articles extends Model
     public function getArticles()
 
     {
-        $articles = \App\Model\Articles::findAll();
 
+        $articles = \App\Model\Articles::findAllByLimit(3);
 
         include __DIR__ . '/../Template/article.php';
+
 
     }
 

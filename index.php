@@ -6,4 +6,4 @@ $articles = new \App\Model\Articles();
 $articles->getArticles();
 
 
-?>
+

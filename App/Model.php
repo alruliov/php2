@@ -5,7 +5,7 @@ namespace App;
 abstract class Model
 {
 
-    public static $table = 'foobar';
+
 
     public static function findAll()
     {
@@ -15,13 +15,27 @@ abstract class Model
          */
         $db = new Db();
         $data = $db->query(
-            'SELECT * FROM ' . static::$table . ' ORDER BY id DESC LIMIT 3',
+            'SELECT * FROM ' . static::$table,
             [],
             static::class
         );
         return $data;
     }
 
+    public static function findAllByLimit($limit)
+    {
+
+        /**
+         * ORDER BY id DESC LIMIT 3 - в соответсвии с дз - где указано вывести 3 последние новости
+         */
+        $db = new Db();
+        $data = $db->query(
+            'SELECT * FROM ' . static::$table . ' ORDER BY id DESC LIMIT ' . $limit,
+            [],
+            static::class
+        );
+        return $data;
+    }
     public static function findById($id)
     {
         $db = new Db();
