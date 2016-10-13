@@ -27,33 +27,20 @@ class Articles extends Model
      * но так возможно ближе всего к заданию)
      */
 
-    public function getArticles()
+    public function getAllByLimit($limit)
 
     {
 
-        $articles = \App\Model\Articles::findAllByLimit(3);
+        return \App\Model\Articles::findAllByLimit($limit);
 
-
-
-        include __DIR__ . '/../Template/articles.php';
 
 
     }
 
-    public function getOneArticle($id)
+    public function getOne($id)
 
     {
-        $article = \App\Model\Articles::findById($id);
-
-        if ($article) {
-            include __DIR__ . '/../Template/article.php';
-        } else {
-
-            /***
-             * Заглушка
-             */
-            echo 'Выбраной Вами статьи не существует'; die;
-        }
+       return \App\Model\Articles::findById($id);
 
 
     }

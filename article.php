@@ -2,6 +2,9 @@
 
 require_once __DIR__ . '/autoload.php';
 
-$article = new \App\Model\Articles();
-$article->getOneArticle($_GET['id']);
+$news = new \App\Model\Articles();
+
+$article = $news->getOne($_GET['id']);
+
+include __DIR__ . '/App/Template/articleOne.php';
 
