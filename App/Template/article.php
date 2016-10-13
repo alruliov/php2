@@ -21,7 +21,7 @@
 <div class="container">
     <div class="col-md-8">
 
-        <?php foreach ($articles as $value):?>
+        <?php foreach ($article as $value):?>
             <h2 style="color: blue;"><?=$value->title?></h2>
             <p>Дата: <?=$value->created_at?></p>
             <p>Автор: <?=$value->author?></p>

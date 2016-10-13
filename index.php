@@ -2,11 +2,11 @@
 
 require_once __DIR__ . '/autoload.php';
 
-$news = new \App\Model\Articles();
+$news = new \App\Controllers\News();
 
-$articles = $news->getAllByLimit(3);
+$news->getAll();
 
-include __DIR__ . '/App/Template/article.php';
+
 
 
 
