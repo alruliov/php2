@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 
-
 class News
 {
 
@@ -17,7 +16,7 @@ class News
 
     public function getOne(int $id)
     {
-        $article= \App\Model\Article::findById($id);
+        $article = \App\Model\Article::findById($id);
         include __DIR__ . '/../Template/articleOne.php';
 
     }

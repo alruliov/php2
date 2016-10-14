@@ -22,10 +22,10 @@
     <div class="col-md-8">
 
 
-            <h2 style="color: blue;"><?=$article->title?></h2>
-            <p>Дата: <?=$article->created_at?></p>
-            <p>Автор: <?=$article->author?></p>
-            <h3><?=$article->text?></h3>
+        <h2 style="color: blue;"><?= $article->title ?></h2>
+        <p>Дата: <?= $article->created_at ?></p>
+        <p>Автор: <?= $article->author ?></p>
+        <h3><?= $article->text ?></h3>
 
     </div>
 

@@ -21,12 +21,12 @@
 <div class="container">
     <div class="col-md-8">
 
-        <?php foreach ($articles as $value):?>
-            <h2 style="color: blue;"><?=$value->title?></h2>
-            <p>Дата: <?=$value->created_at?></p>
-            <p>Автор: <?=$value->author?></p>
-            <h3><a href="article.php?id=<?=$value->id?>"><?=$value->text?></a></h3>
-        <?php endforeach;?>
+        <?php foreach ($articles as $value): ?>
+            <h2 style="color: blue;"><?= $value->title ?></h2>
+            <p>Дата: <?= $value->created_at ?></p>
+            <p>Автор: <?= $value->author ?></p>
+            <h3><a href="article.php?id=<?= $value->id ?>"><?= $value->text ?></a></h3>
+        <?php endforeach; ?>
     </div>
 
 
