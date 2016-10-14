@@ -2,9 +2,9 @@
 
 namespace App\Model;
 
-use App\Model;
+use App\Classes\Model;
 
-class News extends Model
+class Article extends Model
 {
 
     public static $table = 'news';
