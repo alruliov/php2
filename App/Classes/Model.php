@@ -108,7 +108,7 @@ abstract class Model
 
     }
 
-    public static function delete($id)
+    public function delete($id)
     {
         $db = new Db();
         $sql = 'DELETE FROM ' . static::$table . ' WHERE id=:id';
