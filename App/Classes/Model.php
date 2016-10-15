@@ -61,10 +61,51 @@ abstract class Model
                 VALUES
                 (' . implode(', ', $binds) . ')
                 ';
+            //var_dump($sql);
             $db = new Db();
             $db->execute($sql, $data);
             $this->id = $db->lastInsertId();
         }
+    }
+
+    protected function update()
+    {
+        $binds = [];
+        $data = [];
+        foreach ($this as $columns => $value) {
+            if (is_null($value)) {
+                continue;
+            }
+            $data [':' . $columns] = $value;
+            if ('id' == $columns) {
+                continue;
+            }
+
+
+            $binds [] = $columns . '=:' . $columns;
+        }
+
+        $sql = 'UPDATE ' . static::$table . ' SET ' . implode(', ', $binds) . ' WHERE id=:id';
+
+        //var_dump($sql, $binds, $data); die;
+
+        $db = new Db();
+        $db->execute($sql, $data);
+        $this->id = $db->lastInsertId();
+
+    }
+
+    public function save()
+    {
+
+        //var_dump($this->id);
+        if (!isset($this->id)) {
+            $this->insert();
+        } else {
+            $this->update();
+            return true;
+        };
+
     }
 
 
