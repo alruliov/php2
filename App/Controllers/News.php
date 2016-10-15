@@ -23,5 +23,6 @@ class News
         include __DIR__ . '/../Template/articleOne.php';
 
     }
+   
 
 }

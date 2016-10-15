@@ -91,7 +91,7 @@ abstract class Model
 
         $db = new Db();
         $db->execute($sql, $data);
-        $this->id = $db->lastInsertId();
+
 
     }
 
@@ -105,6 +105,14 @@ abstract class Model
             $this->update();
             return true;
         };
+
+    }
+
+    public static function delete($id)
+    {
+        $db = new Db();
+        $sql = 'DELETE FROM ' . static::$table . ' WHERE id=:id';
+        $db->execute($sql, [':id'=>$id]);
 
     }
 
