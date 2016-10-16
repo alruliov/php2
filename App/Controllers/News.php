@@ -9,7 +9,7 @@ use App\Model\Article;
 class News
 {
 
-    public function getAll()
+    public function getLimit()
     {
 
         $articles = Article::findAllByLimit(3);
