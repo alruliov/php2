@@ -6,7 +6,7 @@
  * Time: 16:00
  */
 
-namespace App\Classes;
+namespace App;
 
 
 class Config
@@ -18,7 +18,7 @@ class Config
     public function __construct()
     {
 
-        $this->data = include __DIR__ . '/../Config/database.php';
+        $this->data = include __DIR__ . '/Config/database.php';
 
     }
 

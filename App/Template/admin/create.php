@@ -21,17 +21,17 @@
 
 <div class="container">
     <div class="col-md-8">
-        <form action="update.php" method="post">
+        <form action="create.php" method="post">
 
             <div class="form-group">
                 <label for="title">Заголовок</label>
-                <input type="title" class="form-control" name="title" value="<?php echo $article->title?>">
-                <input type="hidden" name="id" value="<?php echo $article->id?>">
+                <input type="title" class="form-control" name="title">
             </div>
             <div class="form-group">
                 <label for="text">Текст</label>
-                <input type="text" class="form-control" name="text" value="<?php echo $article->text?>">
+                <input type="text" class="form-control" name="text">
             </div>
+
             <button type="submit" class="btn btn-default">Отправить</button>
         </form>
     </div>
@@ -42,4 +42,3 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
-

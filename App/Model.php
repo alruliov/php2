@@ -1,14 +1,16 @@
 <?php
 
-namespace App\Classes;
+namespace App;
+
+
 
 abstract class Model
 {
 
+
     public static $table;
 
     public $id;
-
 
     public static function findAll()
     {
@@ -61,7 +63,6 @@ abstract class Model
                 VALUES
                 (' . implode(', ', $binds) . ')
                 ';
-            //var_dump($sql);
             $db = new Db();
             $db->execute($sql, $data);
             $this->id = $db->lastInsertId();
@@ -73,21 +74,17 @@ abstract class Model
         $binds = [];
         $data = [];
         foreach ($this as $columns => $value) {
-            if (is_null($value)) {
-                continue;
-            }
-            $data [':' . $columns] = $value;
+            $data[':' . $columns] = $value;
             if ('id' == $columns) {
                 continue;
             }
 
-
-            $binds [] = $columns . '=:' . $columns;
+            $binds[] = $columns . '=:' . $columns;
         }
 
         $sql = 'UPDATE ' . static::$table . ' SET ' . implode(', ', $binds) . ' WHERE id=:id';
 
-        //var_dump($sql, $binds, $data); die;
+        //var_dump($this->data); die;
 
         $db = new Db();
         $db->execute($sql, $data);
@@ -97,9 +94,7 @@ abstract class Model
 
     public function save()
     {
-
-        //var_dump($this->id);
-        if (!isset($this->id)) {
+        if ($this->isNew()) {
             $this->insert();
         } else {
             $this->update();
@@ -112,7 +107,7 @@ abstract class Model
     {
         $db = new Db();
         $sql = 'DELETE FROM ' . static::$table . ' WHERE id=:id';
-        $db->execute($sql, [':id'=>$id]);
+        $db->execute($sql, [':id' => $id]);
 
     }
 

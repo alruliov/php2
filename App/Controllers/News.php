@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 
 use App\Model\Article;
+use App\View;
 
 
 class News
@@ -11,17 +12,16 @@ class News
 
     public function getLimit()
     {
-
-        $articles = Article::findAllByLimit(3);
-        include __DIR__ . '/../Template/article.php';
-
+        $view = new View();
+        $view->articles = Article::findAllByLimit(3);
+        $view->display(__DIR__ . '/../Template/article.php');
     }
 
     public function getOne(int $id)
     {
-        $article = Article::findById($id);
-        include __DIR__ . '/../Template/articleOne.php';
-
+        $view = new View();
+        $view->article = Article::findById($id);
+        $view->display(__DIR__ . '/../Template/articleOne.php');
     }
 
 

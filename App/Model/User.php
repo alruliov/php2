@@ -1,12 +1,20 @@
 <?php
 
-namespace App\Classes\Model;
+namespace App\Model;
 
+use App\Model;
+
+/**
+ * Class User
+ * @package App\Model
+ */
 class User
 
     extends Model
 {
-
+    /**
+     * @var string
+     */
     public static $table = 'users';
 
     public $id;

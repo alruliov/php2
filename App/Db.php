@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Classes;
+namespace App;
 
 class Db
 {
@@ -9,7 +9,9 @@ class Db
 
     public function __construct()
     {
-        $this->dbh = new \PDO('mysql:host=localhost;dbname=php2', 'root', '');
+        $config = new Config();
+        $dsn = 'mysql:dbname=' . $config->data['db']['name'] . ';host=' . $config->data['db']['host'];
+        $this->dbh = new \PDO($dsn, $config->data['db']['user'], $config->data['db']['password']);
     }
 
     public function execute(string $sql, array $data = [])

@@ -1,56 +1,54 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Lusienne
- * Date: 15.10.2016
- * Time: 20:46
- */
+
 
 namespace App\Controllers;
 
-
 use App\Model\Article;
+use App\View;
 
 class Admin
 {
     public function show()
     {
-        $articles = Article::findAll();
-        include __DIR__ . '/../Template/admin/index.php';
+        $view = new View();
+        $view->articles = Article::findAll();
+        $view->display(__DIR__ . '/../Template/admin/index.php');
     }
 
-    public function edit($id = null)
+    public function edit($id)
     {
-
-        if (null === $id) {
-
-            include __DIR__ . '/../Template/admin/edit.php';
-
-        } else {
-
-            $article = Article::findById($id);
-
-            include __DIR__ . '/../Template/admin/edit.php';
-
-        }
+        $view = new View();
+        $view->article = Article::findById($id);
+        $view->display(__DIR__ . '/../Template/admin/edit.php');
 
     }
-    public function process($data)
+
+    public function createNews()
     {
-        // на случай если пользователь не заполнил какое-либо поле
-        if(in_array(null, $data)){
-            $this->edit();
-            return false;
-        };
+        $view = new View();
+        $view->display(__DIR__ . '/../Template/admin/create.php');
+
+    }
+
+    public function create($data)
+    {
+
         $article = new Article();
-        if (isset($data['id'])){
-            $article->id = $data['id'];
-        }
         $article->title = $data['title'];
         $article->text = $data['text'];
         $article->save();
         header("Location: admin.php");
     }
+
+    public function update($data)
+    {
+        $article = Article::findById($data['id']);
+        $article->title = $data['title'];
+        $article->text = $data['text'];
+        $article->save();
+        header("Location: admin.php");
+    }
+
 
     public function delete($id)
     {

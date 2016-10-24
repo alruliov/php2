@@ -21,11 +21,9 @@
 <div class="container">
     <div class="col-md-8">
 
-
-        <h2 style="color: blue;"><?= $article->title ?></h2>
-        <p>Дата: <?= $article->created_at ?></p>
-        <p>Автор: <?= $article->author ?></p>
-        <h3><?= $article->text ?></h3>
+        <h2 style="color: blue;"><?php echo $article->title ?></h2>
+        <h3><?php echo $article->text ?></h3>
+        <h3><?php echo $article->author->name ?? 'Без автора'?></h3>
 
     </div>
 
