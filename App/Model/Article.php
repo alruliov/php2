@@ -35,9 +35,9 @@ class Article extends Model
     public function __get($name)
     {
 
-        if ($name == 'author'){
+        if ($name == 'author') {
 
-            return  Author::findById($this->author_id);
+            return Author::findById($this->author_id);
 
         } else return null;
 
@@ -51,11 +51,13 @@ class Article extends Model
 
     public function __isset($name)
     {
-        if ($name == 'author'){
+        if ($name == 'author') {
 
-            return  true;
+            return true;
 
-        } else return false;
+        } else {
+            return false;
+        }
 
     }
 

@@ -21,7 +21,7 @@
 
 <div class="container">
     <div class="col-md-8">
-        <form action="create.php" method="post">
+        <form action="/admin/create" method="post">
 
             <div class="form-group">
                 <label for="title">Заголовок</label>

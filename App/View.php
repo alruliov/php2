@@ -13,10 +13,8 @@ class View
     implements \Countable, \Iterator
 
 {
-    use Properties;
+    use TProperties;
 
-
-    protected $data = [];
 
     /**
      * @param $template

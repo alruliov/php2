@@ -2,8 +2,10 @@
 
 namespace App;
 
-trait Properties
+trait TProperties
 {
+
+    protected $data = [];
 
     public function __set($key, $value)
     {

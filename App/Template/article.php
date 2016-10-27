@@ -20,14 +20,14 @@
 <body>
 <div class="container">
     <div class="col-md-8">
-        <button class="btn btn-info"><a href="/admin.php">Админ панель</a></button>
+        <button class="btn btn-info"><a href="/admin/show">Админ панель</a></button>
     </div>
 </div>
 <div class="container">
     <div class="col-md-8">
         <?php foreach ($articles as $article): ?>
             <h2 style="color: blue;"><?= $article->title ?></h2>
-            <h3><a href="article.php?id=<?= $article->id ?>"><?= $article->text ?></a></h3>
+            <h3><a href="/news/getOne/?id=<?= $article->id ?>"><?= $article->text ?></a></h3>
             <h3><?php echo $article->author->name ?? 'Без автора'?></h3>
         <?php endforeach; ?>
     </div>

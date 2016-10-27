@@ -20,7 +20,7 @@
 <body>
 <div class="container" style="margin-top: 2%">
 
-    <a href="edit.php">Создать новость</a>
+    <a href="/admin/edit">Создать новость</a>
 
 </div>
 <div class="container" style="margin-top: 10%">
@@ -31,8 +31,8 @@
                 <tr>
                     <td><?=$article->title?></td>
                     <td><?=$article->text?></td>
-                    <td><a href="edit.php?id=<?=$article->id?>">Правка</a></td>
-                    <td><a href="delete.php?id=<?=$article->id?>">Удаление</a></td>
+                    <td><a href="/admin/edit/?id=<?=$article->id?>">Правка</a></td>
+                    <td><a href="/admin/delete/?id=<?=$article->id?>">Удаление</a></td>
                 </tr>
             <?php endforeach;?>
             </tbody>

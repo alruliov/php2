@@ -3,34 +3,50 @@
 
 namespace App\Controllers;
 
+use App\Controller;
 use App\Model\Article;
-use App\View;
 
-class Admin
+
+class Admin extends Controller
 {
-    public function show()
-    {
-        $view = new View();
-        $view->articles = Article::findAll();
-        $view->display(__DIR__ . '/../Template/admin/index.php');
-    }
 
-    public function edit($id)
+    public function access($name)
     {
-        $view = new View();
-        $view->article = Article::findById($id);
-        $view->display(__DIR__ . '/../Template/admin/edit.php');
+        if ($name == 'admin') {
 
-    }
+            return true;
 
-    public function createNews()
-    {
-        $view = new View();
-        $view->display(__DIR__ . '/../Template/admin/create.php');
+        } else {
+
+            return false;
+
+        }
 
     }
 
-    public function create($data)
+    public function actionShow()
+    {
+
+        $this->view->articles = Article::findAll();
+        $this->view->display(__DIR__ . '/../Template/admin/index.php');
+    }
+
+    public function actionEdit()
+    {
+
+        $this->view->article = Article::findById($_GET['id']);
+        $this->view->display(__DIR__ . '/../Template/admin/edit.php');
+
+    }
+
+    public function actionCreateNews()
+    {
+
+        $this->view->display(__DIR__ . '/../Template/admin/create.php');
+
+    }
+
+    public function actionCreate($data)
     {
 
         $article = new Article();
@@ -40,7 +56,7 @@ class Admin
         header("Location: admin.php");
     }
 
-    public function update($data)
+    public function actionUpdate($data)
     {
         $article = Article::findById($data['id']);
         $article->title = $data['title'];
@@ -50,10 +66,10 @@ class Admin
     }
 
 
-    public function delete($id)
+    public function actionDelete()
     {
         $article = new Article();
-        $article->delete($id);
+        $article->delete($_GET['id']);
         $this->show();
 
     }

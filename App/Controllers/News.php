@@ -3,25 +3,25 @@
 namespace App\Controllers;
 
 
+use App\Controller;
 use App\Model\Article;
 use App\View;
 
 
-class News
+class News extends Controller
 {
 
-    public function getLimit()
+
+    public function actionGetLimit()
     {
-        $view = new View();
-        $view->articles = Article::findAllByLimit(3);
-        $view->display(__DIR__ . '/../Template/article.php');
+        $this->view->articles = Article::findAllByLimit(3);
+        $this->view->display(__DIR__ . '/../Template/article.php');
     }
 
-    public function getOne(int $id)
+    public function actionGetOne()
     {
-        $view = new View();
-        $view->article = Article::findById($id);
-        $view->display(__DIR__ . '/../Template/articleOne.php');
+        $this->view->article = Article::findById($_GET['id']);
+        $this->view->display(__DIR__ . '/../Template/articleOne.php');
     }
 
 
