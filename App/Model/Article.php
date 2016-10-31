@@ -37,7 +37,7 @@ class Article extends Model
 
         if ($name == 'author') {
 
-            return Author::findId($this->author_id);
+            return Author::findById($this->author_id);
 
         } else {
 
