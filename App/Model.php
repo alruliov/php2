@@ -12,6 +12,7 @@ abstract class Model
 
     public $id;
 
+
     public static function findAll()
     {
 
@@ -155,6 +156,15 @@ abstract class Model
         $sql = 'DELETE FROM ' . static::$table . ' WHERE id=:id';
         $db->execute($sql, [':id' => $id]);
 
+    }
+
+    public function fill(array $data)
+    {
+        foreach ($data as $key => $value){
+
+            $this->$key = $value;
+
+        }
     }
 
 

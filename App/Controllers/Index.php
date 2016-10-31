@@ -6,6 +6,7 @@ namespace App\Controllers;
 
 use App\Controller;
 use App\Model\Article;
+use App\MultiException;
 use App\View;
 
 class Index
@@ -14,7 +15,6 @@ class Index
 
     public function actionDefault()
     {
-
         $this->view->articles = Article::findAllByLimit(3);
         $this->view->display(__DIR__ . '/../Template/article.php');
     }
@@ -30,6 +30,33 @@ class Index
     {
 
         $this->view->display(__DIR__ . '/../Template/errorPage.php');
+
+    }
+
+    public function actionTestMultiException(){
+        $errors  = new MultiException();
+        $article = new Article();
+        $article->fill([
+            'id' => '1',
+            'title' => 'Новые приключения!!!',
+            'text' => '',
+            'author_id' => '2',
+
+        ]);
+
+        if (empty($article->id)){
+            $errors->add(new MultiException('Пустой id'));
+        }
+        if (empty($article->title)){
+            $errors->add(new MultiException('Пустой title'));
+        }
+        if (empty($article->text)){
+            $errors->add(new MultiException('Пустой text'));
+        }
+        if (empty($article->author_id)){
+            $errors->add(new MultiException('Пустой author_id'));
+        }
+        throw $errors;
 
     }
 
