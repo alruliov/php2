@@ -15,4 +15,36 @@ $actRequest = !empty($parts[2]) ? $parts[2] : 'Default';
 $actMethodName = 'action' . $actRequest;
 
 
-$ctrl->$actMethodName();
+try {
+
+    $ctrl->action($actMethodName);
+}
+
+catch (\App\CustomException $e) {
+
+    $errorPage = new \App\Controllers\Index();
+    $errorPage->action404($e->getMessage());
+
+
+}
+
+
+catch (\App\MultiException $e) {
+
+    echo 'Errors: ';
+
+    foreach ($e as $error) {
+
+        echo $error->getMessage();
+    }
+}
+catch (Exception $e) {
+
+    $errorPage = new \App\Controllers\Index();
+    $errorPage->actionErrorPage();
+}
+
+
+
+
+

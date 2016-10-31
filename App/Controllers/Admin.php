@@ -11,7 +11,6 @@ use App\Model\Article;
 class Admin extends Controller
 {
 
-    
 
    public function actionShow()
     {

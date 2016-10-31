@@ -37,9 +37,13 @@ class Article extends Model
 
         if ($name == 'author') {
 
-            return Author::findById($this->author_id);
+            return Author::findId($this->author_id);
 
-        } else return null;
+        } else {
+
+            return null;
+
+        }
 
     }
 
@@ -56,7 +60,9 @@ class Article extends Model
             return true;
 
         } else {
+
             return false;
+
         }
 
     }

@@ -18,7 +18,17 @@ abstract class Model
         $db = new Db();
         $sql = 'SELECT * FROM ' . static::$table;
         $data = $db->query($sql, [], static::class);
-        return $data ?? false;
+        if (empty($data)){
+
+            $e = new CustomException('По вашему запросу ничего не найдено');
+            throw $e;
+
+        } else {
+
+            return $data;
+
+        }
+
     }
 
     public static function findAllByLimit($limit)
@@ -26,16 +36,52 @@ abstract class Model
         $db = new Db();
         $sql = 'SELECT * FROM ' . static::$table . ' ORDER BY id DESC LIMIT ' . $limit;
         $data = $db->query($sql, [], static::class);
-        return $data ?? false;
+        if (empty($data)){
+
+            throw new CustomException('Данные не найдены');
+
+        } else {
+
+            return $data;
+
+        }
+
     }
 
 
     public static function findById($id)
     {
         $db = new Db();
+
         $sql = 'SELECT * FROM ' . static::$table . ' WHERE id=:id';
+
         $data = $db->query($sql, [':id' => $id], static::class);
+
+
+
+        if (empty($data)){
+
+            $e = new CustomException('По вашему запросу ничего не найдено');
+            throw $e;
+
+        } else {
+
+            return $data[0];
+
+        }
+    }
+    //Создал данный метод, так как не придумал как обойти выбрасывание исключения в findById,
+    // при отсутсвии автора
+    public static function findId($id)
+    {
+        $db = new Db();
+
+        $sql = 'SELECT * FROM ' . static::$table . ' WHERE id=:id';
+
+        $data = $db->query($sql, [':id' => $id], static::class);
+
         return $data[0] ?? false;
+
     }
 
     public function isNew()
