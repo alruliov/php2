@@ -29,6 +29,7 @@ abstract class Controller
             echo 'Доступ закрыт'; die;
 
         }
+
         elseif (method_exists($this, $action)){
 
                 return $this->$action();
