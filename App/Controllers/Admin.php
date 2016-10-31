@@ -11,7 +11,9 @@ use App\Model\Article;
 class Admin extends Controller
 {
 
-   protected function actionShow()
+    
+
+   public function actionShow()
     {
 
         $this->view->articles = Article::findAll();
