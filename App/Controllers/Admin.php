@@ -4,27 +4,14 @@
 namespace App\Controllers;
 
 use App\Controller;
+
 use App\Model\Article;
 
 
 class Admin extends Controller
 {
 
-    public function access($name)
-    {
-        if ($name == 'admin') {
-
-            return true;
-
-        } else {
-
-            return false;
-
-        }
-
-    }
-
-    public function actionShow()
+   protected function actionShow()
     {
 
         $this->view->articles = Article::findAll();

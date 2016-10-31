@@ -1,22 +1,18 @@
 <?php
 
-require __DIR__ . '/autoload.php';
+require_once __DIR__ . '/autoload.php';
 
-$url = $_SERVER['REQUEST_URI'];
-
-$parts = explode('/', $url);
+$parts = explode('/', $_SERVER['REQUEST_URI']);
 
 $ctrlRequest = !empty($parts[1]) ? $parts[1] : 'Index';
 
-$actionRequest = !empty($parts[2]) ? $parts[2] : 'Default';
+$ctrlClassName = '\App\Controllers\\' . $ctrlRequest;
+
+$ctrl = new $ctrlClassName;
+
+$actRequest = !empty($parts[2]) ? $parts[2] : 'Default';
+
+$actMethodName = 'action' . $actRequest;
 
 
-
-$controller = New \App\Controller();
-
-$controller->action($ctrlRequest, $actionRequest);
-
-
-
-
-
+$ctrl->$actMethodName();

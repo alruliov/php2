@@ -1,55 +1,40 @@
 <?php
 
-
 namespace App;
 
+abstract class Controller
 
-class Controller
 {
     protected $view;
 
     public function __construct()
     {
         $this->view = new View();
+    }
 
+
+
+
+    protected function access()
+    {
+
+        return true;
 
     }
 
-    public function action($ctrlRequest, $actionRequest)
+    public function action($action)
     {
+        if ($this->access() === false){
 
-        $ctrlClassName = '\App\Controllers\\' . ucfirst($ctrlRequest);
+            echo 'Доступ закрыт'; die;
 
-        $controller = new $ctrlClassName;
+        }
+        elseif (method_exists($this, $action)){
 
-        $actionMethodName = 'action' . ucfirst($actionRequest);
-
-        //var_dump($ctrlClassName);die;
-
-        if ($ctrlClassName === '\App\Controllers\Admin'){
-
-            if ($controller->access('admin') === true){
-
-                $controller->$actionMethodName();
-
-            } else {
-
-                echo 'Доступ закрыт!';die;
-
-            }
-
-        } else {
-
-            $controller->$actionMethodName();
+                return $this->$action();
 
         }
 
-
-
-
-
     }
-
-
 
 }
