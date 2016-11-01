@@ -115,11 +115,7 @@ abstract class Model
     {
         foreach ($data as $key => $value){
 
-            if ($this->$key == 'id'){
 
-                continue;
-
-            }
             $this->$key = $value;
 
         }
