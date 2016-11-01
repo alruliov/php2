@@ -2,7 +2,6 @@
 
 require_once __DIR__ . '/autoload.php';
 
-
 $parts = explode('/', $_SERVER['REQUEST_URI']);
 
 $ctrlRequest = !empty($parts[1]) ? $parts[1] : 'Index';
@@ -16,7 +15,36 @@ $actRequest = !empty($parts[2]) ? $parts[2] : 'Default';
 $actMethodName = 'action' . $actRequest;
 
 
+try {
+
+    $ctrl->action($actMethodName);
+}
+
+catch (\App\CustomException $e) {
+
+    $errorPage = new \App\Controllers\Index();
+    $errorPage->action404($e->getMessage());
 
 
-$ctrl->action($actMethodName);
+}
+
+
+catch (\App\MultiException $e) {
+
+    echo 'Errors: ';
+
+    foreach ($e as $error) {
+
+        echo $error->getMessage();
+    }
+}
+catch (Exception $e) {
+
+    $errorPage = new \App\Controllers\Index();
+    $errorPage->actionErrorPage();
+}
+
+
+
+
 
