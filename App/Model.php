@@ -111,5 +111,19 @@ abstract class Model
 
     }
 
+    public function fill(array $data)
+    {
+        foreach ($data as $key => $value){
+
+            if ($this->$key == 'id'){
+
+                continue;
+
+            }
+            $this->$key = $value;
+
+        }
+    }
+
 
 }

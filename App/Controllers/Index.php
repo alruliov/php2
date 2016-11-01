@@ -37,6 +37,7 @@ class Index
     public function actionTestMultiException(){
         $errors  = new MultiException();
         $article = new Article();
+
         $article->fill([
             'id' => '1',
             'title' => 'Новые приключения!!!',

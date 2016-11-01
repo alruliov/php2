@@ -18,18 +18,13 @@ $actMethodName = 'action' . $actRequest;
 try {
 
     $ctrl->action($actMethodName);
-}
-
-catch (\App\CustomException $e) {
+} catch (\App\CustomException $e) {
 
     $errorPage = new \App\Controllers\Index();
     $errorPage->action404($e->getMessage());
 
 
-}
-
-
-catch (\App\MultiException $e) {
+} catch (\App\MultiException $e) {
 
     echo 'Errors: ';
 
@@ -37,8 +32,7 @@ catch (\App\MultiException $e) {
 
         echo $error->getMessage();
     }
-}
-catch (Exception $e) {
+} catch (Exception $e) {
 
     $errorPage = new \App\Controllers\Index();
     $errorPage->actionErrorPage();
