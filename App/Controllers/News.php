@@ -24,7 +24,7 @@ class News extends Controller
             throw $e;
 
         }
-        $this->view->twig('article.php', $articles);
+        $this->view->twig('article.php', ['articles'=>$articles]);
     }
 
     public function actionGetOne()

@@ -3,7 +3,6 @@
 namespace App;
 
 
-
 abstract class Model
 {
 
@@ -113,7 +112,7 @@ abstract class Model
 
     public function fill(array $data)
     {
-        foreach ($data as $key => $value){
+        foreach ($data as $key => $value) {
 
 
             $this->$key = $value;
