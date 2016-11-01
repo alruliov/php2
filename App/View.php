@@ -37,6 +37,15 @@ class View
         return $html;
     }
 
+    public function twig($template, $data){
+
+        $loader = new \Twig_Loader_Filesystem(__DIR__ . '/Template/');
+        $twig = new \Twig_Environment($loader);
+        echo $twig->render($template, $data);
+
+
+    }
+
 
     /**
      * Count elements of an object

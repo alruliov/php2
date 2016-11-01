@@ -4,7 +4,6 @@
 namespace App\Controllers;
 
 use App\Controller;
-
 use App\Model\Article;
 
 
@@ -12,7 +11,7 @@ class Admin extends Controller
 {
 
 
-   public function actionShow()
+    public function actionShow()
     {
 
         $this->view->articles = Article::findAll();

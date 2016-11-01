@@ -15,9 +15,10 @@ class Index
 
     public function actionDefault()
     {
-        $this->view->articles = Article::findAllByLimit(3);
-        $this->view->display(__DIR__ . '/../Template/article.php');
+        $articles = Article::findAllByLimit(3);
+        $this->view->twig('article.php', ['articles'=> $articles]);
     }
+
 
     public function action404($error)
     {
@@ -59,5 +60,7 @@ class Index
         throw $errors;
 
     }
+
+
 
 }

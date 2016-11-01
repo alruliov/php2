@@ -25,11 +25,15 @@
 </div>
 <div class="container">
     <div class="col-md-8">
-        <?php foreach ($articles as $article): ?>
-            <h2 style="color: blue;"><?= $article->title ?></h2>
-            <h3><a href="/news/getOne/?id=<?= $article->id ?>"><?= $article->text ?></a></h3>
-            <h3><?php echo $article->author->name ?? 'Без автора'?></h3>
-        <?php endforeach; ?>
+
+        {% for article in articles %}
+        <h1><a href="/news/getOne/?id={{ article.id }}">{{ article.title }}</a></h1>
+        <h2>{{ article.text }}</h2>
+        {% if article.author %}
+        <p>{{article.author.name}}</p>
+        {% endif %}
+        {% endfor %}
+
     </div>
 
 
