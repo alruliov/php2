@@ -27,7 +27,7 @@ class Index
 
     }
 
-    public function actionErrorPage()
+    public function actionError()
     {
 
         $this->view->display(__DIR__ . '/../Template/errorPage.php');

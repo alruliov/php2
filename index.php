@@ -35,7 +35,7 @@ try {
 } catch (Exception $e) {
 
     $errorPage = new \App\Controllers\Index();
-    $errorPage->actionErrorPage();
+    $errorPage->actionError();
 }
 
 
