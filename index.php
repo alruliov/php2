@@ -32,7 +32,7 @@ try {
 
         echo $error->getMessage();
     }
-} catch (Exception $e) {
+} catch (\App\DBException $e) {
 
     $errorPage = new \App\Controllers\Index();
     $errorPage->actionError();

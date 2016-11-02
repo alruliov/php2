@@ -14,7 +14,7 @@ class Db
         try {
         $this->dbh = new \PDO($dsn, $config->data['db']['user'], $config->data['db']['password']);
         } catch (\PDOException $e){
-            throw new \Exception('Ошибка соединения с БД');
+            throw new DBException('Ошибка соединения с БД');
         }
 
     }
@@ -24,7 +24,7 @@ class Db
         $sth = $this->dbh->prepare($sql);
         $result = $sth->execute($data);
         if (false === $result) {
-            throw new \Exception('Ошибка в запросе.');
+            throw new DBException('Ошибка в запросе.');
         }
         return true;
     }
@@ -36,7 +36,7 @@ class Db
         $result = $sth->execute($data);
 
         if (false === $result) {
-            throw new \Exception('Ошибка в запросе.');
+            throw new DBException('Ошибка в запросе.');
         }
         if (null === $class) {
             return $sth->fetchAll();
