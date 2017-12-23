@@ -11,7 +11,7 @@ namespace App;
 /**
  * Class Config
  * @package App
- * Проеряем конфиг. файл .env и его свойства добавляем в $_ENV
+ * Проверяем конфиг. файл .env и его свойства добавляем в $_ENV
  */
 class Config
 {
