@@ -9,10 +9,9 @@ class Db
 
     public function __construct()
     {
-        $config = new Config();
-        $dsn = 'mysql:dbname=' . $config->data['db']['name'] . ';host=' . $config->data['db']['host'];
+        $dsn = 'mysql:dbname=' . $_ENV['DB_DATABASE'] . ';host=' . $_ENV['DB_HOST'];
         try {
-        $this->dbh = new \PDO($dsn, $config->data['db']['user'], $config->data['db']['password']);
+        $this->dbh = new \PDO($dsn, $_ENV['DB_USERNAME'], $_ENV['DB_PASSWORD']);
         } catch (\PDOException $e){
             throw new DBException('Ошибка соединения с БД');
         }

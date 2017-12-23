@@ -2,6 +2,9 @@
 
 require_once __DIR__ . '/../autoload.php';
 
+//Создаем переменные окружения, настройки
+$config = new \App\Config();
+
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/', 'IndexController@index');
 

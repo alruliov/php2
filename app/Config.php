@@ -8,19 +8,27 @@
 
 namespace App;
 
-
+/**
+ * Class Config
+ * @package App
+ * Проеряем конфиг. файл .env и его свойства добавляем в $_ENV
+ */
 class Config
 {
 
-    public $data;
-
-
     public function __construct()
     {
-
-        $this->data = include __DIR__ . '/Config/database.php';
-
+        $this->getProperties();
     }
 
+    protected function getProperties()
+    {
+        $result = file(__DIR__ . '/../.env', FILE_SKIP_EMPTY_LINES);
+        foreach ($result as $value) {
+            $item = explode("=", $value, 2);
+            $_ENV[trim($item[0])] = trim($item[1]);
+        }
+
+    }
 
 }
