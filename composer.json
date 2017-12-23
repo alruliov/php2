@@ -1,5 +1,11 @@
 {
+  "name": "zlaker/kassy_by",
+  "description": "",
+  "license": "MIT",
+  "type": "project",
+  "minimum-stability": "stable",
   "require": {
-    "twig/twig": "^1.27"
+    "smarty/smarty": "^3.1",
+    "nikic/fast-route": "^1.2"
   }
 }

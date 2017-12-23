@@ -15,12 +15,12 @@ class User
     /**
      * @var string
      */
-    public static $table = 'users';
+    public static $table = 'User';
 
-    public $id;
-    public $email;
-    public $login;
-    public $name;
-    public $age;
+//    public $id;
+//    public $email;
+//    public $login;
+//    public $name;
+//    public $age;
 
 }

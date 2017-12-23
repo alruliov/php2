@@ -19,9 +19,10 @@ class Db
 
     }
 
-    public function execute(string $sql, array $data = [])
+    public function execute($sql, array $data = [])
     {
         $sth = $this->dbh->prepare($sql);
+
         $result = $sth->execute($data);
         if (false === $result) {
             throw new DBException('Ошибка в запросе.');
@@ -29,14 +30,15 @@ class Db
         return true;
     }
 
-    public function query(string $sql, array $data = [], $class = null)
+    public function query($sql, array $data = [], $class = null)
     {
         $sth = $this->dbh->prepare($sql);
 
         $result = $sth->execute($data);
 
+
         if (false === $result) {
-            throw new DBException('Ошибка в запросе.');
+            throw new DBException('Нет такого результата.');
         }
         if (null === $class) {
             return $sth->fetchAll();

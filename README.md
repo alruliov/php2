@@ -1,9 +1,22 @@
-#php2
-#ДЗ4
+#MVC Микрофрейморк 
 
-Исправил ошибки, но к сожалению не учел, что ДЗ 5 будет перезаписывать 4 задание, извиняюсь, что так получилось 
 
-# php2
-# ДЗ 5 
+1. Шалонизатор Smarty
+2. Роутер nikic/fast-route
+3. Будет дополнятся различными библиотеками 
 
-Решение п.4 ДЗ - App\Controller\index->actionTestMultiException
+#Front end
+
+  
+1. Bootstrap 3
+2. Jquery 
+
+Шаблоны 
+
+````
+/app/templates
+````
+
+#Точка входа 
+````
+/public/index.php

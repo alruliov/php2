@@ -17,7 +17,11 @@ abstract class Model
         $db = new Db();
         $sql = 'SELECT * FROM ' . static::$table;
         $data = $db->query($sql, [], static::class);
-        return $data ?? false;
+        if(isset($data)){
+            return $data;
+        }else{
+            return null;
+        }
     }
 
     public static function findAllByLimit($limit)
@@ -25,16 +29,24 @@ abstract class Model
         $db = new Db();
         $sql = 'SELECT * FROM ' . static::$table . ' ORDER BY id DESC LIMIT ' . $limit;
         $data = $db->query($sql, [], static::class);
-        return $data ?? false;
+        if(isset($data)){
+            return $data;
+        }else{
+            return null;
+        }
     }
 
 
-    public static function findById($id)
+    public static function find($id)
     {
         $db = new Db();
-        $sql = 'SELECT * FROM ' . static::$table . ' WHERE id=:id';
+        $sql = 'SELECT * FROM ' . static::$table . ' WHERE user_id=:id';
         $data = $db->query($sql, [':id' => $id], static::class);
-        return $data[0] ?? false;
+        if(isset($data[0])){
+            return $data[0];
+        }else{
+            return null;
+        }
     }
 
     public function isNew()

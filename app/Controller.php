@@ -10,6 +10,7 @@ abstract class Controller
     public function __construct()
     {
         $this->view = new View();
+        $this->smarty = new \Smarty();//\Twig_Environment(new \Twig_Loader_Filesystem([__DIR__ . '/templates']));
     }
 
 
