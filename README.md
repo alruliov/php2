@@ -1,11 +1,11 @@
-#MVC Микрофрейморк 
+# MVC Микрофрейморк 
 
 
 1. Шалонизатор Smarty
 2. Роутер nikic/fast-route
 3. Будет дополнятся различными библиотеками 
 
-#Front end
+# Front end
 
   
 1. Bootstrap 3
@@ -17,6 +17,6 @@
 /app/templates
 ````
 
-#Точка входа 
+# Точка входа 
 ````
 /public/index.php
